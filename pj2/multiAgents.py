@@ -158,7 +158,7 @@ class MinimaxAgent(MultiAgentSearchAgent):
         """
         "*** YOUR CODE HERE ***"
         node = {'state': gameState, 'actions': [], 'value': -float('inf'), 'depth': 0}
-        node['value'] = self.evaluationFunction(gameState)
+        # node['value'] = self.evaluationFunction(gameState)
         resNode = self.minimax(node, self.depth, 0, gameState.getNumAgents())        
         return resNode['actions'][0]
     
@@ -182,7 +182,8 @@ class MinimaxAgent(MultiAgentSearchAgent):
             resNode = None
             for action in prevState.getLegalActions(0):
                 newState = prevState.generateSuccessor(0, action)
-                newVal = self.evaluationFunction(newState)
+                # newVal = self.evaluationFunction(newState)
+                newVal = 0.0
                 newNode = {
                     'state': newState,
                     'actions': node['actions'] + [action],
@@ -201,7 +202,8 @@ class MinimaxAgent(MultiAgentSearchAgent):
             resNode = None
             for action in prevState.getLegalActions(agentIdx):
                 newState = prevState.generateSuccessor(agentIdx, action)
-                newVal = self.evaluationFunction(newState)
+                # newVal = self.evaluationFunction(newState)
+                newVal = 0.0
                 newNode = {
                     'state': newState,
                     'actions': node['actions'],
@@ -231,7 +233,7 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
         """
         "*** YOUR CODE HERE ***"
         node = {'state': gameState, 'actions': [], 'value': -float('inf'), 'depth': 0}
-        node['value'] = self.evaluationFunction(gameState)
+        # node['value'] = self.evaluationFunction(gameState)
 #        expandRes = self.expandNode(node)
 #        maxVal = -float('inf') 
 #        candidate = node
@@ -267,7 +269,8 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             resNode = None
             for action in prevState.getLegalActions(0):
                 newState = prevState.generateSuccessor(0, action)
-                newVal = self.evaluationFunction(newState)
+                # newVal = self.evaluationFunction(newState)
+                newVal = 0.0
                 newNode = {
                     'state': newState,
                     'actions': node['actions'] + [action],
@@ -293,7 +296,8 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             resNode = None
             for action in prevState.getLegalActions(agentIdx):
                 newState = prevState.generateSuccessor(agentIdx, action)
-                newVal = self.evaluationFunction(newState)
+                # newVal = self.evaluationFunction(newState)
+                newVal = 0.0
                 newNode = {
                     'state': newState,
                     'actions': node['actions'],
@@ -331,7 +335,7 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
         """
         "*** YOUR CODE HERE ***"
         node = {'state': gameState, 'actions': [], 'value': -float('inf'), 'depth': 0}
-        node['value'] = self.evaluationFunction(gameState)
+        # node['value'] = self.evaluationFunction(gameState)
         resNode = self.minimax(node, self.depth, 0, gameState.getNumAgents())        
         return resNode['actions'][0]
 
@@ -355,7 +359,8 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
             resNode = None
             for action in prevState.getLegalActions(0):
                 newState = prevState.generateSuccessor(0, action)
-                newVal = self.evaluationFunction(newState)
+                # newVal = self.evaluationFunction(newState)
+                newVal = 0.0
                 newNode = {
                     'state': newState,
                     'actions': node['actions'] + [action],
@@ -376,7 +381,8 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
             legalActions = prevState.getLegalActions(agentIdx)
             for action in legalActions:
                 newState = prevState.generateSuccessor(agentIdx, action)
-                newVal = self.evaluationFunction(newState)
+                # newVal = self.evaluationFunction(newState)
+                newVal = 0.0
                 newNode = {
                     'state': newState,
                     'actions': node['actions'],
