@@ -29,20 +29,19 @@ Autograder feedback:
 Provisional grades
 ==================
 Question q1: 3/4
-Question q2: 0/5
-Question q3: 0/5
-Question q4: 0/5
+Question q2: 5/5
+Question q3: 5/5
+Question q4: 5/5
 Question q5: 0/6
 ------------------
-Total: 3/25
+Total: 18/25
 ```
-Well, that's not good... When I was running the autograder, I received 
-back-to-back Exception saying that:
+A pitfall: do not call self.evaluationFunction() before max depth achieved!
+or you will recieve the exception and fail autograder test.
 ```
 FAIL: Exception raised: getScore() called on non-terminal state or \
 before maximum depth achieved.
 ```
-**TODO**
 
 # Project 3: Reinforcement Learning
 Handout: <https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj3/>
