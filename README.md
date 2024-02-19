@@ -32,9 +32,9 @@ Question q1: 3/4
 Question q2: 5/5
 Question q3: 5/5
 Question q4: 5/5
-Question q5: 0/6
+Question q5: 5/6
 ------------------
-Total: 18/25
+Total: 23/25
 ```
 A pitfall: do not call self.evaluationFunction() before max depth achieved!
 or you will recieve the exception and fail autograder test.

@@ -405,6 +405,14 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
                 'depth': node['depth']
             }
 
+def minDist(dists: list):
+    res = 0.0
+    try:
+        res = min(dists)
+    except ValueError:
+        res = 0
+    return res
+
 def betterEvaluationFunction(currentGameState: GameState):
     """
     Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
@@ -422,7 +430,10 @@ def betterEvaluationFunction(currentGameState: GameState):
     ghostDist = []
     for ghost in ghostPos:
         ghostDist.append(util.manhattanDistance(ghost, pos)) 
-    return min(ghostDist) - sum(foodDist) / len(foodDist)
+    minGhostDist = min(ghostDist)
+    if minGhostDist > 4:
+        return 5 - minDist(foodDist) / 10 - len(foodDist)  # ignore the influence of ghost(s).
+    return minGhostDist - minDist(foodDist) / 10 - len(foodDist)
 
 # Abbreviation
 better = betterEvaluationFunction
