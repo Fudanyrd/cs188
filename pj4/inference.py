@@ -677,8 +677,9 @@ class ParticleFilter(InferenceModule):
         """
         "*** YOUR CODE HERE ***"
         res = DiscreteDistribution()
-        for pos in self.legalPositions:
-            res[pos] = self.particles.count(pos)
+        for pos in self.particles:
+            # res[pos] = self.particles.count(pos)
+            res[pos] += 1
         try:
             res.normalize()
         except ZeroDivisionError:
@@ -757,6 +758,7 @@ class JointParticleFilter(ParticleFilter):
     """
     def __init__(self, numParticles=600):
         self.setNumParticles(numParticles)
+        self.posTuples = []
 
     def initialize(self, gameState, legalPositions):
         """
@@ -765,6 +767,7 @@ class JointParticleFilter(ParticleFilter):
         self.numGhosts = gameState.getNumAgents() - 1
         self.ghostAgents = []
         self.legalPositions = legalPositions
+        self.posTuples = list(itertools.product(self.legalPositions, repeat = self.numGhosts))
         self.initializeUniformly(gameState)
 
     ########### ########### ###########
@@ -778,7 +781,8 @@ class JointParticleFilter(ParticleFilter):
         uniform prior.
         """
         self.particles = []
-        tuples = list(itertools.product(self.legalPositions, repeat = self.numGhosts))
+        # tuples = list(itertools.product(self.legalPositions, repeat = self.numGhosts))
+        tuples = self.posTuples
         # print(tuples) # list of ((x1, y1), (x2, y2))
         # print(len(tuples)) # 121
         "*** YOUR CODE HERE ***"
@@ -822,8 +826,24 @@ class JointParticleFilter(ParticleFilter):
         the DiscreteDistribution may be useful.
         """
         "*** YOUR CODE HERE ***"
-        raiseNotDefined()
+        pacman = gameState.getPacmanPosition()
+        res = DiscreteDistribution()
+        for pos in self.posTuples:
+            prob = 1.0
+            for i in range(self.numGhosts):
+                jail = self.getJailPosition(i)
+                prob *= self.getObservationProb(observation[i], pacman, pos[i], jail)
+            res[pos] = prob * self.particles.count(pos)
+        if res.total() == 0.0:
+            self.initializeUniformly(gameState)
+            return self.getBeliefDistribution()
         "*** END YOUR CODE HERE ***"
+        res.normalize()
+        self.particles = []
+        for pos in self.posTuples:
+            for i in range(int(res[pos] * self.numParticles)):
+                self.particles.append(pos)
+        return res
 
     ########### ########### ###########
     ########### QUESTION 14 ###########
@@ -840,7 +860,17 @@ class JointParticleFilter(ParticleFilter):
 
             # now loop through and update each entry in newParticle...
             "*** YOUR CODE HERE ***"
-            raiseNotDefined()
+            for i in range(self.numGhosts):
+                newPosDist = self.getPositionDistribution(gameState, newParticle, i, self.ghostAgents[i])
+                maxProb = random.random()
+                prob = 0.0
+                pos = None
+                for key in list(newPosDist.keys()):
+                    prob += newPosDist[key]
+                    if prob >= maxProb:
+                        pos = key
+                        break
+                newParticle[i] = pos
             """*** END YOUR CODE HERE ***"""
             newParticles.append(tuple(newParticle))
         self.particles = newParticles

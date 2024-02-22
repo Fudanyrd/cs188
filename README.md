@@ -77,16 +77,13 @@ Question q8: 1/1
 Question q9: 1/1
 Question q10: 2/2
 Question q11: 2/2
-Question q12: 0/1
-Question q13: 0/2
-Question q14: 0/2
+Question q12: 1/1
+Question q13: 2/2
+Question q14: 2/2
 ------------------
-Total: 20/25
+Total: 25/25
 ```
-Mainly about Bayes Net and Particle Filters. I couldn't pass question 12
-because I didn't really understand what '*Each particle will represent a 
-tuple of ghost positions that is a sample of where all the ghosts are at 
-the present time*' means...**TODO**
+Mainly about Bayes Net and Particle Filters and Dynamic Bayes Nets. 
 
 # Project 5: Machine Learning
 Handout: <https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj5/>
