@@ -103,8 +103,18 @@ digit-classification and language-classfication!
 
 # Next will be solution to CS189(fa 23)
 ## Homewok 3
+In folder `hw3_files`.  
 [Handout](https://eecs189.org/docs/hw3.pdf)  
 Due to time constraints, I only completed task 2 and 3 in it.  
 In task 2, you will implement a simple neuron network using `numpy`.  
 Task 3 is an introduction to [pytorch](https://pytorch.org) and [Google Colab](https://colab.research.google.com/) where **free** GPU is available.
 Autograder of this course is unfortunately **locked**(so grade to my solution will not be shown)...
+
+## Homewok 7
+In folder `hw7_files`.  
+[Handout](https://eecs189.org/docs/hw7.pdf)  
+I completed task 2 of it which is using [Pytorch Geometric Library](https://pytorch-geometric.readthedocs.io/en/latest/) to train a graph neuron network(a.k.a GNN). SInce it will take hours to train, be patient and leave enough time for it!
+
+# Where to Go Next
+Computer science is really hard. Be careful of what to choose.  
+The **end**.
