@@ -2,6 +2,8 @@
 Completed all 6 projects on Feb 21, 2024
 (Although it doesn't mean I got all credits...)
 
+The course website now requires login. Other course [resources](https://github.com/Hyle33ies/CS188.git). 
+
 ## Project 1: Search
 Handout: <https://inst.eecs.berkeley.edu/~cs188/fa22/projects/proj1/>
 Autograder feedback:
